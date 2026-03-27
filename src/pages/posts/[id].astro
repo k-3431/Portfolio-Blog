@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const base = import.meta.env.BASE_URL;
 ---
 
 <Base title={post.data.title}>
@@ -22,14 +23,14 @@ const { Content } = await render(post);
     </header>
     {post.data.image && (
       <div class="post-hero">
-        <img src={post.data.image} alt={post.data.title} />
+        <img src={`${base}${post.data.image}`} alt={post.data.title} />
       </div>
     )}
     <div class="post-body">
       <Content />
     </div>
     <footer class="post-footer">
-      <a href="/" class="back-link">
+      <a href={`${base}/`} class="back-link">
         <span class="back-arrow">&larr;</span>
         <span>返回</span>
       </a>
@@ -38,8 +39,9 @@ const { Content } = await render(post);
 </Base>
 
 <style>
+  /* ── Container ── */
   .post {
-    max-width: 620px;
+    max-width: 960px;
     animation: fadeIn 0.5s ease both;
   }
 
@@ -48,6 +50,7 @@ const { Content } = await render(post);
     to { opacity: 1; }
   }
 
+  /* ── Header ── */
   .post-header {
     margin-bottom: 36px;
   }
@@ -64,7 +67,7 @@ const { Content } = await render(post);
 
   .post-title {
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: -0.01em;
@@ -72,12 +75,14 @@ const { Content } = await render(post);
 
   .post-hero {
     margin-bottom: 36px;
+    max-width: 560px;
   }
 
   .post-hero img {
     width: 100%;
   }
 
+  /* ── Body ── */
   .post-body {
     font-size: 0.95rem;
     line-height: 2;
@@ -85,12 +90,14 @@ const { Content } = await render(post);
   }
 
   .post-body :global(p) {
+    max-width: 640px;
     margin-bottom: 1.6em;
     text-align: justify;
   }
 
   .post-body :global(img) {
-    margin: 2.5em 0;
+    max-width: 100%;
+    margin: 2em 0;
   }
 
   .post-body :global(blockquote) {
@@ -99,8 +106,437 @@ const { Content } = await render(post);
     color: var(--fg-muted);
     margin: 2em 0;
     font-style: italic;
+    max-width: 640px;
   }
 
+  /* ── Section labels ── */
+  .post-body :global(.section-label) {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 3.5em;
+  }
+
+  .post-body :global(.section-label:first-child) {
+    margin-top: 0;
+  }
+
+  .post-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3em;
+    margin-bottom: 0.8em;
+    letter-spacing: -0.01em;
+  }
+
+  .post-body :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+  }
+
+  .post-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3.5em 0;
+  }
+
+  /* ── Media placeholders (base) ── */
+  .post-body :global(.media-placeholder) {
+    background: #d5d3cf;
+    border: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    margin: 2em 0;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* 獨立 placeholder — 限制在合理尺寸，確保單一元素不超過視窗高度 */
+  .post-body :global(.media-placeholder.hero) {
+    aspect-ratio: 16 / 9;
+    max-width: 560px;
+    max-height: 315px;
+  }
+
+  .post-body :global(.media-placeholder.square) {
+    aspect-ratio: 1 / 1;
+    max-width: 240px;
+    max-height: 240px;
+  }
+
+  .post-body :global(.media-placeholder.wide) {
+    aspect-ratio: 21 / 9;
+    max-width: 560px;
+    max-height: 240px;
+  }
+
+  .post-body :global(.media-placeholder.tall) {
+    aspect-ratio: 3 / 4;
+    max-width: 220px;
+    max-height: 290px;
+  }
+
+  .post-body :global(.media-placeholder.banner) {
+    aspect-ratio: 3 / 1;
+    max-width: 560px;
+    max-height: 187px;
+  }
+
+  /* ── Media grids ── */
+  .post-body :global(.media-grid) {
+    display: grid;
+    gap: 6px;
+    margin: 2em 0;
+    max-width: 600px;
+  }
+
+  .post-body :global(.media-grid.two) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .post-body :global(.media-grid.three) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .post-body :global(.media-grid .media-placeholder) {
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    max-width: none;
+    max-height: none;
+  }
+
+  .post-body :global(.media-grid .media-placeholder.tall) {
+    aspect-ratio: 3 / 4;
+  }
+
+  .post-body :global(.media-grid .media-placeholder.square) {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* ── Horizontal layout ── */
+  .post-body :global(.layout-h) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+    margin: 2em 0;
+    max-width: 640px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 3px;
+  }
+
+  .post-body :global(.layout-h.reverse > :first-child) {
+    order: 2;
+  }
+
+  .post-body :global(.layout-h.reverse > :last-child) {
+    order: 1;
+  }
+
+  .post-body :global(.layout-h .layout-text) {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .post-body :global(.layout-h .layout-text p) {
+    max-width: 100%;
+    margin-bottom: 0.6em;
+  }
+
+  .post-body :global(.layout-h .layout-text p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .post-body :global(.layout-h .media-placeholder) {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    max-width: none;
+    max-height: none;
+  }
+
+  .post-body :global(.layout-h .media-placeholder.tall) {
+    aspect-ratio: 3 / 4;
+    max-width: 200px;
+    max-height: 267px;
+    justify-self: center;
+  }
+
+  .post-body :global(.layout-h .media-placeholder.square) {
+    aspect-ratio: 1 / 1;
+  }
+
+  .post-body :global(.layout-h .media-placeholder.hero) {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* ── Full-width dark section (breakout) ── */
+  .post-body :global(.section-dark) {
+    background: #1a1a1a;
+    color: #edebe8;
+    padding: 48px 40px;
+    margin-left: -28px;
+    margin-right: -28px;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    width: calc(100% + 56px);
+  }
+
+  .post-body :global(.section-dark + .section-dark) {
+    margin-top: 6px;
+  }
+
+  .post-body :global(.section-dark p) {
+    color: #c8c4be;
+    max-width: 640px;
+  }
+
+  .post-body :global(.section-dark .section-label) {
+    color: #777;
+  }
+
+  .post-body :global(.section-dark .media-placeholder) {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #777;
+  }
+
+  .post-body :global(.section-dark h2),
+  .post-body :global(.section-dark h3) {
+    color: #edebe8;
+  }
+
+  /* section-dark 內的元素繼承限制 */
+  .post-body :global(.section-dark .layout-h) {
+    max-width: 640px;
+  }
+
+  .post-body :global(.section-dark .media-grid) {
+    max-width: 600px;
+  }
+
+  .post-body :global(.section-dark .media-placeholder.hero) {
+    max-width: 560px;
+    max-height: 315px;
+  }
+
+  .post-body :global(.section-dark .media-placeholder.wide) {
+    max-width: 560px;
+    max-height: 240px;
+  }
+
+  /* ── Tools list ── */
+  .post-body :global(.tools-list) {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.05em;
+    line-height: 2.2;
+  }
+
+  /* ── Keywords ── */
+  .post-body :global(.keywords) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1.5em 0;
+  }
+
+  .post-body :global(.keywords span) {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* ── Timeline ── */
+  .post-body :global(.timeline) {
+    position: relative;
+    padding-left: 20px;
+    border-left: 1px solid var(--border);
+    margin: 2em 0;
+    max-width: 520px;
+  }
+
+  .post-body :global(.timeline-item) {
+    position: relative;
+    padding-bottom: 1.4em;
+  }
+
+  .post-body :global(.timeline-item::before) {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .post-body :global(.timeline-date) {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .post-body :global(.timeline-text) {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+
+  /* ── Video Embed ── */
+  .post-body :global(.video-embed) {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 2.5em;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #0a0a0a;
+    cursor: pointer;
+  }
+
+  .post-body :global(.video-embed img) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s;
+  }
+
+  .post-body :global(.video-embed:hover img) {
+    opacity: 0.7;
+  }
+
+  .post-body :global(.video-embed .play-btn) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, border-color 0.3s;
+    pointer-events: none;
+  }
+
+  .post-body :global(.video-embed:hover .play-btn) {
+    transform: translate(-50%, -50%) scale(1.08);
+    border-color: #fff;
+  }
+
+  .post-body :global(.video-embed .play-btn::after) {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 14px;
+    border-color: transparent transparent transparent rgba(255,255,255,0.9);
+    margin-left: 3px;
+  }
+
+  .post-body :global(.video-embed iframe) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .post-body :global(.video-embed.playing img),
+  .post-body :global(.video-embed.playing .play-btn) {
+    display: none;
+  }
+
+  /* ── Caption ── */
+  .post-body :global(.caption) {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.06em;
+    margin-top: -1.5em;
+    margin-bottom: 2.5em;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 860px) {
+    .post-body :global(.layout-h),
+    .post-body :global(.layout-h.reverse) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .post-body :global(.layout-h.reverse > :first-child) {
+      order: unset;
+    }
+
+    .post-body :global(.layout-h.reverse > :last-child) {
+      order: unset;
+    }
+
+    .post-body :global(.layout-h .media-placeholder.tall) {
+      max-width: 240px;
+    }
+
+    .post-body :global(.section-dark) {
+      margin-left: -20px;
+      margin-right: -20px;
+      width: calc(100% + 40px);
+      padding: 28px 20px;
+    }
+
+    .post-body :global(.media-grid.three) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .post-body :global(p),
+    .post-body :global(.section-dark p),
+    .post-body :global(blockquote),
+    .post-body :global(.timeline) {
+      max-width: 100%;
+    }
+
+    .post-body :global(.media-placeholder.hero),
+    .post-body :global(.media-placeholder.wide),
+    .post-body :global(.media-placeholder.banner),
+    .post-body :global(.layout-h),
+    .post-body :global(.media-grid) {
+      max-width: 100%;
+    }
+  }
+
+  /* ── Footer ── */
   .post-footer {
     margin-top: 64px;
     padding-top: 24px;

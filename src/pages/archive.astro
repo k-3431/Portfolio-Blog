@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const categories = [...new Set(posts.map((p) => p.data.category).filter(Boolean))];
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="文章目錄">
+  <h1 class="page-title">文章目錄</h1>
+
+  {categories.map((cat) => (
+    <section class="cat-section">
+      <h2 class="cat-title">{cat}</h2>
+      <div class="cat-list">
+        {posts
+          .filter((p) => p.data.category === cat)
+          .map((post) => (
+            <a href={`${base}/posts/${post.id}`} class="archive-item">
+              <time class="archive-date">{post.data.date}</time>
+              <span class="archive-name">{post.data.title}</span>
+            </a>
+          ))}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 600;
+    margin-bottom: 48px;
+    letter-spacing: -0.01em;
+  }
+
+  .cat-section {
+    margin-bottom: 40px;
+  }
+
+  .cat-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--fg-faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .archive-item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: var(--fg);
+    transition: color 0.2s, padding-left 0.3s;
+  }
+
+  .archive-item:hover {
+    padding-left: 8px;
+  }
+
+  .archive-date {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    width: 70px;
+  }
+
+  .archive-name {
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .archive-item:hover .archive-name {
+    color: var(--fg-muted);
+  }
+</style>
