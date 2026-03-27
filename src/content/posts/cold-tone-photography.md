@@ -1,27 +1,28 @@
 ---
-title: 冷調黑白攝影 — 謝昕諺
+title: 冷調黑白攝影
 date: "2025-05"
-image: "/images/photography/cold-tone-01.jpg"
+image: "/images/cold-tone/cold-tone-cover.jpg"
 excerpt: 棚內人像。後龐克美學的冷冽影像，在黑暗中試圖捕捉一個人快要消失的瞬間。
 category: 攝影
+tags: ["黑白", "棚拍", "人像", "後龐克", "動態模糊", "底片感"]
 ---
 
-棚拍那天其實沒什麼計畫。燈架好了，背景是全黑的，昕諺站在那裡，我只跟他說你不用看鏡頭。
+棚拍那天其實沒什麼計畫。燈架好了，背景是全黑的，他站在那裡，我只跟他說你不用看鏡頭。
 
 一開始拍的幾張都太安全了，構圖工整、光線平穩，像是任何攝影課期末作業會交出來的東西。直到我把快門速度降下來，請他在曝光的過程中轉頭——畫面開始有了動態模糊，人物的輪廓開始跟黑色背景融在一起，好像這個人隨時會從畫面裡蒸發掉。
 
 那個瞬間我覺得對了。
 
-![](/images/photography/cold-tone-02.jpg)
+![](/images/cold-tone/cold-tone-02.jpg)
 
 後龐克聽多了會有一種感覺，就是所有情緒都被壓在很薄的一層表面底下，你知道它在，但它不會爆發。這組照片想做的大概就是這件事——不是要拍一個人有多好看，而是拍他在暗部裡的存在感，那種快要被吞掉但還沒有完全消失的狀態。
 
-![](/images/photography/cold-tone-03.jpg)
+![](/images/cold-tone/cold-tone-03.jpg)
 
-![](/images/photography/cold-tone-04.jpg)
+![](/images/cold-tone/cold-tone-04.jpg)
 
 後來幾張我刻意讓臉幾乎看不見，只剩輪廓和衣服的皺摺在光裡勉強成形。底片感的顆粒是後期加的，但那個灰階的層次是實拍出來的，棚內就一支燈，角度壓很低，讓陰影自己去長。
 
-![](/images/photography/cold-tone-06.jpg)
+![](/images/cold-tone/cold-tone-06.jpg)
 
-![](/images/photography/cold-tone-07.jpg)
+![](/images/cold-tone/cold-tone-07.jpg)

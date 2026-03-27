@@ -21,7 +21,16 @@ const base = import.meta.env.BASE_URL;
           <div class="card-body">
             <h2 class="card-title">{post.data.title}</h2>
             {post.data.excerpt && <p class="card-excerpt">{post.data.excerpt}</p>}
-            <time class="card-date">{post.data.date}</time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="card-tags">
+                {post.data.tags.map((tag: string) => (
+                  <span class="card-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            <div class="card-meta">
+              <time class="card-date">{post.data.date}</time>
+            </div>
           </div>
         </a>
       </article>
@@ -109,13 +118,46 @@ const base = import.meta.env.BASE_URL;
     overflow: hidden;
   }
 
+  .card-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
   .card-date {
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 300;
     color: var(--fg-faint);
     letter-spacing: 0.1em;
-    display: block;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    margin-bottom: 12px;
+  }
+
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.04em;
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 2px;
+    line-height: 1.6;
+  }
+
+  .card-cat {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 2px;
   }
 
   .page-end {

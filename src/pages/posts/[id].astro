@@ -26,9 +26,28 @@ const base = import.meta.env.BASE_URL;
         <img src={`${base}${post.data.image}`} alt={post.data.title} />
       </div>
     )}
-    <div class="post-body">
+    <div class="post-body" id="postBody">
       <Content />
     </div>
+    <script define:vars={{ base }}>
+      function rewritePaths() {
+        const body = document.getElementById('postBody');
+        if (!body) return;
+        body.querySelectorAll('img[src^="/images/"], img[src^="/favicon"]').forEach(el => {
+          const src = el.getAttribute('src');
+          if (!src.startsWith(base)) el.src = base + src;
+        });
+        body.querySelectorAll('a[href^="/"]').forEach(el => {
+          const href = el.getAttribute('href');
+          if (!href.startsWith('//') && !href.startsWith(base)) el.href = base + href;
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', rewritePaths);
+      } else {
+        rewritePaths();
+      }
+    </script>
     <footer class="post-footer">
       <a href={`${base}/`} class="back-link">
         <span class="back-arrow">&larr;</span>
@@ -75,11 +94,15 @@ const base = import.meta.env.BASE_URL;
 
   .post-hero {
     margin-bottom: 36px;
-    max-width: 560px;
+    max-width: 720px;
   }
 
   .post-hero img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    border: 1px solid var(--border);
   }
 
   /* ── Body ── */
@@ -87,6 +110,7 @@ const base = import.meta.env.BASE_URL;
     font-size: 0.95rem;
     line-height: 2;
     color: var(--fg);
+    max-width: 720px;
   }
 
   .post-body :global(p) {
@@ -97,6 +121,9 @@ const base = import.meta.env.BASE_URL;
 
   .post-body :global(img) {
     max-width: 100%;
+    max-height: 70vh;
+    width: 100%;
+    object-fit: contain;
     margin: 2em 0;
   }
 
@@ -200,7 +227,7 @@ const base = import.meta.env.BASE_URL;
     display: grid;
     gap: 6px;
     margin: 2em 0;
-    max-width: 600px;
+    max-width: 100%;
   }
 
   .post-body :global(.media-grid.two) {
@@ -218,8 +245,32 @@ const base = import.meta.env.BASE_URL;
     max-height: none;
   }
 
+  .post-body :global(.media-grid img) {
+    width: 100%;
+    margin: 0;
+    object-fit: cover;
+  }
+
   .post-body :global(.media-grid .media-placeholder.tall) {
     aspect-ratio: 3 / 4;
+  }
+
+  /* ── Media Row (equal height, variable width) ── */
+  .post-body :global(.media-row) {
+    display: flex;
+    gap: 12px;
+    margin: 2em 0;
+    align-items: stretch;
+    max-width: 100%;
+  }
+
+  .post-body :global(.media-row img) {
+    flex: 1 1 0;
+    object-fit: cover;
+    margin: 0;
+    min-width: 0;
+    max-width: none;
+    width: auto;
   }
 
   .post-body :global(.media-grid .media-placeholder.square) {
@@ -289,11 +340,9 @@ const base = import.meta.env.BASE_URL;
     background: #1a1a1a;
     color: #edebe8;
     padding: 48px 40px;
-    margin-left: -28px;
-    margin-right: -28px;
     margin-top: 3em;
     margin-bottom: 3em;
-    width: calc(100% + 56px);
+    max-width: 720px;
   }
 
   .post-body :global(.section-dark + .section-dark) {
@@ -319,6 +368,7 @@ const base = import.meta.env.BASE_URL;
   .post-body :global(.section-dark h3) {
     color: #edebe8;
   }
+
 
   /* section-dark 內的元素繼承限制 */
   .post-body :global(.section-dark .layout-h) {
@@ -514,6 +564,10 @@ const base = import.meta.env.BASE_URL;
       margin-right: -20px;
       width: calc(100% + 40px);
       padding: 28px 20px;
+    }
+
+    .post-body :global(.media-row img) {
+      height: auto;
     }
 
     .post-body :global(.media-grid.three) {

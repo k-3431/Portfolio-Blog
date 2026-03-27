@@ -1,9 +1,10 @@
 ---
 title: Fingerprint of Fibonacci
 date: "2025-12"
-image: "/images/motion/fibonacci-cover.png"
+image: "/images/fingerprint-of-fibonacci/cover.png"
 excerpt: 費波那契的指紋。一件關於數學秩序與生命混沌之間的舞台動態視覺作品。
 category: 動態視覺
+tags: ["數學秩序", "有機生命", "黃金螺旋", "公式", "失真", "噪音", "LVS"]
 ---
 
 <div class="section-label">Concept</div>
@@ -24,7 +25,7 @@ category: 動態視覺
   <span>LVS</span>
 </div>
 
-<img src="/images/motion/fibonacci/center-stage-1.jpg" alt="主視覺 — 黃金比例公式與幾何" />
+<img src="/images/fingerprint-of-fibonacci/center-stage-1.jpg" alt="主視覺 — 黃金比例公式與幾何" />
 <div class="caption">F(n) = F(n-1) + F(n-2)</div>
 
 ---
@@ -36,7 +37,7 @@ category: 動態視覺
     <p>整體畫面節奏由精密到混亂、由控制到釋放，形成一種理性與感性、數據與生命之間的張力。</p>
     <p>以抽象敘事動畫呈現，結合幾何生成、介面交互、粒子動態與數據視覺語言，探索秩序與生命的張力。</p>
   </div>
-  <img src="/images/motion/fibonacci/render-lr-2.jpg" alt="視覺方向 — LR 海報立面" />
+  <img src="/images/fingerprint-of-fibonacci/render-lr-2.jpg" alt="視覺方向 — LR 海報立面" />
 </div>
 
 ---
@@ -53,14 +54,14 @@ category: 動態視覺
 
 透過閃爍將「列印」具象化，搭建完美的空間但卻不符合正確的比例。在整體情緒到達一定的高度時，仍讓樂器保持克制和秩序，試圖表現出制度下的壓抑。
 
-<img src="/images/motion/fibonacci/render-m-2.jpg" alt="開幕 — 黃金螺旋幾何" />
+<img src="/images/fingerprint-of-fibonacci/render-m-2.jpg" alt="開幕 — 黃金螺旋幾何" />
 
 <div class="media-grid two">
-  <img src="/images/motion/fibonacci/center-stage-2.jpg" alt="第一幕 — 黃金螺旋緩緩生成" />
-  <img src="/images/motion/fibonacci/render-m-4.jpg" alt="第一幕 — 幾何結構完整展開" />
+  <img src="/images/fingerprint-of-fibonacci/center-stage-2.jpg" alt="第一幕 — 黃金螺旋緩緩生成" />
+  <img src="/images/fingerprint-of-fibonacci/render-m-4.jpg" alt="第一幕 — 幾何結構完整展開" />
 </div>
 
-<img src="/images/motion/fibonacci/stage-preview-2.jpg" alt="第一幕 — 五面螢幕全景（秩序）" />
+<img src="/images/fingerprint-of-fibonacci/stage-preview-2.jpg" alt="第一幕 — 五面螢幕全景（秩序）" />
 
 </div>
 
@@ -79,16 +80,16 @@ category: 動態視覺
     <p>更為緊促的大鼓和吉他刻意讓對點拍錯開，讓畫面和音樂同時交融及錯開。</p>
     <p>視覺上大量引用了 Windows 95 的系統介面、error dialog、藍白當機畫面，將「系統崩潰」這件事做成一種可以被觀看的美學。</p>
   </div>
-  <img src="/images/motion/fibonacci/center-stage-4.jpg" alt="第二幕 — error 404 / Win95 介面堆疊" />
+  <img src="/images/fingerprint-of-fibonacci/center-stage-4.jpg" alt="第二幕 — error 404 / Win95 介面堆疊" />
 </div>
 
 <div class="media-grid three">
-  <img src="/images/motion/fibonacci/center-stage-3.jpg" alt="glitch 紋理 — Windows XP" />
-  <img src="/images/motion/fibonacci/render-m-4.jpg" alt="系統錯誤訊息" />
-  <img src="/images/motion/fibonacci/center-stage-4.jpg" alt="介面崩解" />
+  <img src="/images/fingerprint-of-fibonacci/center-stage-3.jpg" alt="glitch 紋理 — Windows XP" />
+  <img src="/images/fingerprint-of-fibonacci/render-m-4.jpg" alt="系統錯誤訊息" />
+  <img src="/images/fingerprint-of-fibonacci/center-stage-4.jpg" alt="介面崩解" />
 </div>
 
-<img src="/images/motion/fibonacci/stage-preview-4.jpg" alt="第二幕 — 五面螢幕全景（崩壞）" />
+<img src="/images/fingerprint-of-fibonacci/stage-preview-4.jpg" alt="第二幕 — 五面螢幕全景（崩壞）" />
 
 </div>
 
@@ -103,16 +104,16 @@ category: 動態視覺
 數據在經歷了系統性的壓抑之後，以最自然的形式回歸到非定型的狀態。
 
 <div class="layout-h">
-  <img src="/images/motion/fibonacci/render-lr-4.jpg" alt="第三幕 — 點雲粒子下降" />
+  <img src="/images/fingerprint-of-fibonacci/render-lr-4.jpg" alt="第三幕 — 點雲粒子下降" />
   <div class="layout-text">
     <p>Blender 建了一座中式庭院作為第三幕的場景，粒子從樹冠散落，穿過屋簷，最後沉入地面。</p>
     <p>整個第三幕只有一個鏡頭——從上往下，跟著粒子走。不切、不跳，讓觀眾跟著那些光點一起降落。</p>
   </div>
 </div>
 
-<img src="/images/motion/fibonacci/center-stage-5.jpg" alt="第三幕 — 中式庭院全景" />
+<img src="/images/fingerprint-of-fibonacci/center-stage-5.jpg" alt="第三幕 — 中式庭院全景" />
 
-<img src="/images/motion/fibonacci/live-5.jpg" alt="第三幕 — 五面螢幕全景（生命）" />
+<img src="/images/fingerprint-of-fibonacci/live-5.jpg" alt="第三幕 — 五面螢幕全景（生命）" />
 
 </div>
 
@@ -131,15 +132,15 @@ category: 動態視覺
     <p><strong>Chorus</strong> — 更為緊促的大鼓和吉他刻意讓對點拍錯開，讓畫面和音樂同時交融及錯開。</p>
     <p><strong>Outro</strong> — 一切沉靜下來。</p>
   </div>
-  <img src="/images/motion/fibonacci/sky-stage-2.jpg" alt="聲音視覺化 — Joy Division 波形" />
+  <img src="/images/fingerprint-of-fibonacci/sky-stage-2.jpg" alt="聲音視覺化 — Joy Division 波形" />
 </div>
 
 部分音源來自 Suno 的 AI 生成，再透過 Logic Pro 做後期處理與混音。
 
 <div class="media-grid three">
-  <img src="/images/motion/fibonacci/render-lr-2.jpg" alt="動態海報 — 粒子" />
-  <img src="/images/motion/fibonacci/sky-stage-2.jpg" alt="動態海報 — Joy Division 波形" />
-  <img src="/images/motion/fibonacci/render-t-3.jpg" alt="動態海報 — 透視波形" />
+  <img src="/images/fingerprint-of-fibonacci/render-lr-2.jpg" alt="動態海報 — 粒子" />
+  <img src="/images/fingerprint-of-fibonacci/sky-stage-2.jpg" alt="動態海報 — Joy Division 波形" />
+  <img src="/images/fingerprint-of-fibonacci/render-t-3.jpg" alt="動態海報 — 透視波形" />
 </div>
 
 ---
@@ -158,7 +159,7 @@ category: 動態視覺
       Suno — AI 音源生成
     </div>
   </div>
-  <img src="/images/motion/fibonacci/flat-expand-2.jpg" alt="五面展開預覽" />
+  <img src="/images/fingerprint-of-fibonacci/flat-expand-2.jpg" alt="五面展開預覽" />
 </div>
 
 整個專案從概念發想到舞台展演測試大約六週。
@@ -207,8 +208,8 @@ category: 動態視覺
 </div>
 
 <div class="media-grid two">
-  <img src="/images/motion/fibonacci/render-t-3.jpg" alt="TD — 透視波形系統" />
-  <img src="/images/motion/fibonacci/center-stage-5.jpg" alt="Blender — 中式庭院建模" />
+  <img src="/images/fingerprint-of-fibonacci/render-t-3.jpg" alt="TD — 透視波形系統" />
+  <img src="/images/fingerprint-of-fibonacci/center-stage-5.jpg" alt="Blender — 中式庭院建模" />
 </div>
 
 ---
@@ -219,18 +220,18 @@ category: 動態視覺
 
 五面 LED 螢幕——中央主舞台、左右兩側舞台、天幕——同時亮起來的時候，那個畫面還是很值得的。
 
-<img src="/images/motion/fibonacci/live-1.jpg" alt="LVS 現場 — 開幕全景" />
+<img src="/images/fingerprint-of-fibonacci/live-1.jpg" alt="LVS 現場 — 開幕全景" />
 
 <div class="media-grid two">
-  <img src="/images/motion/fibonacci/live-2.jpg" alt="LVS — 第一幕 秩序" />
-  <img src="/images/motion/fibonacci/live-3.jpg" alt="LVS — 第二幕 崩壞" />
+  <img src="/images/fingerprint-of-fibonacci/live-2.jpg" alt="LVS — 第一幕 秩序" />
+  <img src="/images/fingerprint-of-fibonacci/live-3.jpg" alt="LVS — 第二幕 崩壞" />
 </div>
 
 <div class="media-grid two">
-  <img src="/images/motion/fibonacci/live-5.jpg" alt="LVS — 第三幕 生命" />
-  <img src="/images/motion/fibonacci/live-6.jpg" alt="LVS — 中式庭院 + 點雲" />
+  <img src="/images/fingerprint-of-fibonacci/live-5.jpg" alt="LVS — 第三幕 生命" />
+  <img src="/images/fingerprint-of-fibonacci/live-6.jpg" alt="LVS — 中式庭院 + 點雲" />
 </div>
 
-<img src="/images/motion/fibonacci/live-4.jpg" alt="LVS — 崩壞段全景" />
+<img src="/images/fingerprint-of-fibonacci/live-4.jpg" alt="LVS — 崩壞段全景" />
 
-<img src="/images/motion/fibonacci/flat-expand-4.jpg" alt="Stage Preview — 五面展開預覽" />
+<img src="/images/fingerprint-of-fibonacci/flat-expand-4.jpg" alt="Stage Preview — 五面展開預覽" />

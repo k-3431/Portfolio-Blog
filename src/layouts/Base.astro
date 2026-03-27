@@ -122,7 +122,7 @@ const social = [
       }
 
       .site-identity {
-        margin-bottom: 48px;
+        margin-bottom: 32px;
       }
 
       .site-title {
@@ -313,7 +313,7 @@ const social = [
         top: 16px;
         left: 16px;
         z-index: 100;
-        background: transparent;
+        background: #fff;
         color: var(--fg);
         border: 1px solid var(--border);
         width: 36px;
@@ -321,12 +321,13 @@ const social = [
         font-size: 0.7rem;
         font-family: var(--font-mono);
         cursor: pointer;
-        transition: background 0.2s;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
       }
 
-      .mobile-toggle:hover {
+      .mobile-toggle.open {
         background: var(--fg);
-        color: var(--bg);
+        color: #fff;
+        border-color: var(--fg);
       }
 
       @media (max-width: 860px) {
@@ -341,6 +342,7 @@ const social = [
           transition: transform 0.4s cubic-bezier(0.25, 0.1, 0, 1);
           border-right: none;
           box-shadow: 4px 0 24px rgba(0,0,0,0.06);
+          padding-top: 72px;
         }
 
         .sidebar.open {
@@ -388,6 +390,7 @@ const social = [
       // Mobile menu
       document.getElementById('menuToggle')?.addEventListener('click', () => {
         document.getElementById('sidebar')?.classList.toggle('open');
+        document.getElementById('menuToggle')?.classList.toggle('open');
       });
 
       // Clock

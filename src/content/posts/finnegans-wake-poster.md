@@ -1,9 +1,10 @@
 ---
 title: Finnegans Wake 文字海報
-date: "2025-05"
-image: "/images/design/finnegans-wake.png"
+date: "2025-04"
+image: "/images/finnegans-wake/cover.jpg"
 excerpt: 以 James Joyce 的《乃悟能守醒》為題的實驗性文字海報設計。
 category: 平面設計
+tags: ["文字海報", "James Joyce", "實驗排版", "解構", "平面設計"]
 ---
 
 Joyce 寫 Finnegans Wake 花了十七年，讀它大概也要花差不多的時間。

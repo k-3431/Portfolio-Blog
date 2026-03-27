@@ -1,157 +1,136 @@
 ---
-title: 希望像星星一樣閃爍
-date: "2025-11"
-image: "/images/motion/hope-sparkles-cover.jpg"
-excerpt: 文雀的動態舞台視覺設計。微粒與光線在黑暗中漂浮，介於人體與星系之間的光的幻覺。
+title: 文雀 — 希望像星星一樣閃爍
+date: "2025-12"
+image: "/images/hope-sparkles/cover.jpg"
+excerpt: 微粒與光線在黑暗中漂浮，介於人體與星系之間，屬於光的幻覺。
 category: 動態視覺
+tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微光", "黑夜"]
 ---
 
 <div class="section-label">Concept</div>
 
-這是為文雀的歌曲《希望像星星一樣閃爍》設計的動態舞台視覺。
+為文雀的歌曲《希望像星星一樣閃爍》設計的動態舞台視覺。全曲視覺以 TouchDesigner 完成，透過聲音驅動畫面，讓音樂直接生成影像。
 
-微粒和光線在黑暗中漂浮，線條彼此牽引、斷裂，彷彿神經或星雲。亮點閃爍、聚集又消散，像訊號在體內循環。整體概念介於人與宇宙之間、具象與虛無之間。
-
-畫面節奏緩慢，有生物電流與呼吸的律動，時而聚焦、時而模糊，讓觀者分不清那是人體、星系，還是光的幻覺。
+前半段以黑白粒子構成情緒底層——細胞、神經元、星塵在暗場中堆疊、旋轉，壓抑而內斂。進入二主二副後，畫面從全黑白過渡到彩色，張力在色彩爆發的瞬間釋放。
 
 <div class="keywords">
+  <span>音畫互動</span>
+  <span>TouchDesigner</span>
+  <span>粒子系統</span>
   <span>星星</span>
   <span>閃爍</span>
-  <span>希望</span>
-  <span>連結</span>
   <span>微光</span>
-  <span>寂靜</span>
   <span>黑夜</span>
-  <span>呼吸</span>
 </div>
 
 ---
 
-## 視覺方向
+<div class="section-dark">
 
-<div class="layout-h">
-  <div class="layout-text">
-    <p>視覺語言從微觀到宏觀不斷切換——細胞分裂的紋理、粒子在暗場中散開又收束、人形輪廓在光網中浮現。所有元素都在黑底上發光，像是從身體內部向外透出的微弱訊號。</p>
-  </div>
-  <img src="/images/motion/hope-sparkles/cells.jpg" alt="細胞分裂紋理" />
-</div>
+<div class="section-label">Intro</div>
 
-<div class="layout-h reverse">
-  <div class="layout-text">
-    <p>人體以線條與節點構成，不是寫實的肉體，而是資訊化的存在。它在畫面中行走、停頓、被光線包裹——是歌曲裡「希望」這個抽象概念的具象載體。</p>
-  </div>
-  <img src="/images/motion/hope-sparkles/phenix.jpg" alt="粒子爆發與光網" />
+## 黑白 — 細胞與神經元
+
+歌曲從暗場開始。細胞狀的粒子從中心向外延展，像神經突觸在黑暗中試探性地生長。所有元素都是白色，在全黑的背景裡勉強成形。
+
+<img src="/images/hope-sparkles/1.jpg" alt="細胞與神經元 — 光的核心" />
+
 </div>
 
 ---
 
-## 歌曲結構與視覺分鏡
+<div class="section-label">1st Verse</div>
 
-整首歌約 8 分 33 秒，視覺隨歌曲段落推進，每個視覺層在不同時間點進出。
+## 雜訊疊加
 
-<div class="section-dark">
-  <div class="section-label">Intro — A1 · A2 · A3</div>
+隨著吉他與碎拍進入，畫面開始加入電視雜訊般的干擾紋理。原本乾淨的粒子結構被訊號噪點侵蝕，輪廓開始模糊、流動。
 
-  <h3>粒子場</h3>
-
-  粒子從暗場中散開，隨吉他與單音進入緩慢擴張。到 A2 段鼓進碎拍時收束，粒子場跟隨節奏呼吸。
-
-  <div class="media-grid two">
-    <img src="/images/motion/hope-sparkles/star.jpg" alt="粒子散開" />
-    <img src="/images/motion/hope-sparkles/sun-2.jpg" alt="粒子收束" />
-  </div>
-
-  <h3>細胞</h3>
-
-  A1 段細胞進入畫面，跟隨大鼓脈動。A3 段開頭散開，進入細胞淡化的過渡。
-
-  <div class="media-grid two">
-    <img src="/images/motion/hope-sparkles/bubble-1.jpg" alt="細胞進入" />
-    <img src="/images/motion/hope-sparkles/bubble-2.jpg" alt="細胞淡化" />
-  </div>
+<div class="media-row">
+  <img src="/images/hope-sparkles/2.jpg" alt="疊加前 — 有機光團" />
+  <img src="/images/hope-sparkles/3.jpg" alt="疊加後 — 雜訊與動態模糊" />
 </div>
+<div class="caption">左：疊加前 ／ 右：加入電視雜訊效果</div>
 
-<div class="section-dark">
-  <div class="section-label">A4 · Pre-Chorus — Chorus</div>
+---
 
-  <h3>光散出與旋轉</h3>
+<div class="section-label">1st Chorus</div>
 
-  貝斯收鼓進段落，光從中心散出。進入副歌後畫面開始旋轉，可加入負片效果反轉明暗。
+## 擴張
 
-  <img src="/images/motion/hope-sparkles/performance-1.jpg" alt="光散出與旋轉" />
+粒子場從中心結構向外擴散，開始佔據整個畫面。一副的結構在淡出中逐漸消散，風車般的粒子雲在暗場中旋轉，為進入二主積蓄能量。
 
-  <h3>人形</h3>
-
-  人物跟隨細胞放大進場，從置中開始，副歌段加入環繞光線。Bridge 段人物朝前走，到 B4 段再次置中。
-
-  <div class="media-grid two">
-    <img src="/images/motion/hope-sparkles/fish-1.jpg" alt="人物場景" />
-    <img src="/images/motion/hope-sparkles/performance-2.jpg" alt="人物環繞" />
-  </div>
-</div>
-
-<div class="section-dark">
-  <div class="section-label">B1 — Outro</div>
-
-  <h3>高潮段</h3>
-
-  大鼓進入後視覺強度提升，二吉進段疊加層次。貝斯和鼓強拍後收拾，畫面逐步回歸。
-
-  副歌 3 進入鳥鳴聲段落，視覺加入閃屏效果。最終人物運鏡收束，貝斯收鼓收尾。
-
-  <div class="media-grid three">
-    <img src="/images/motion/hope-sparkles/sun-1.jpg" alt="光源擴散" />
-    <img src="/images/motion/hope-sparkles/performance-3.jpg" alt="閃屏效果" />
-    <img src="/images/motion/hope-sparkles/fish-2.jpg" alt="運鏡收束" />
-  </div>
+<div class="media-row">
+  <img src="/images/hope-sparkles/4.jpg" alt="螺旋星塵" />
+  <img src="/images/hope-sparkles/5.jpg" alt="風車狀粒子雲" />
 </div>
 
 ---
 
-## 視覺素材
+<div class="section-dark">
 
-六組獨立的 TouchDesigner 視覺模組，各自對應不同的畫面層：
+<div class="section-label">2nd Verse</div>
 
-<div class="layout-h">
-  <div class="layout-text">
-    <p><strong>Phenix</strong> — 粒子爆發與收束<br>
-    <strong>Star</strong> — 星點閃爍場<br>
-    <strong>Cells</strong> — 細胞分裂紋理</p>
-  </div>
-  <div class="media-grid three" style="margin:0">
-    <img src="/images/motion/hope-sparkles/phenix.jpg" alt="Phenix" />
-    <img src="/images/motion/hope-sparkles/star.jpg" alt="Star" />
-    <img src="/images/motion/hope-sparkles/cells.jpg" alt="Cells" />
-  </div>
+## 黑白到彩色
+
+二主開始，同一個核心結構從黑白翻轉為彩色。這是整首歌視覺張力最大的轉換——前段所有壓抑的情緒在色彩湧入的瞬間被釋放。
+
+<div class="media-row">
+  <img src="/images/hope-sparkles/6.jpg" alt="二主前 — 黑白星芒" />
+  <img src="/images/hope-sparkles/8.jpg" alt="二主後 — 彩色綻放" />
+</div>
+<div class="caption">左：黑白 — 壓抑的核心 ／ 右：彩色 — 張力釋放</div>
+
+<img src="/images/hope-sparkles/7.jpg" alt="彩色轉換" />
+
 </div>
 
-<div class="layout-h reverse">
-  <div class="layout-text">
-    <p><strong>Bubble</strong> — 氣泡漂浮與破裂<br>
-    <strong>Fish</strong> — 流體游動粒子<br>
-    <strong>Sun</strong> — 中心光源擴散</p>
-  </div>
-  <div class="media-grid three" style="margin:0">
-    <img src="/images/motion/hope-sparkles/bubble-1.jpg" alt="Bubble" />
-    <img src="/images/motion/hope-sparkles/fish-1.jpg" alt="Fish" />
-    <img src="/images/motion/hope-sparkles/sun-1.jpg" alt="Sun" />
-  </div>
+---
+
+<div class="section-label">Pre-Chorus</div>
+
+## 色彩段落
+
+色彩進入後不再退場。花瓣般的粒子結構從隧道深處湧出，藍紫色的星雲開始聚合，畫面密度與飽和度持續攀升。
+
+<img src="/images/hope-sparkles/9.jpg" alt="星雲聚合" />
+
+---
+
+<div class="section-dark">
+
+<div class="section-label">2nd Chorus</div>
+
+## 高潮
+
+所有視覺層在這裡同時爆發。金黃色的放射紋理層層疊加，左右對稱的粒子結構像蝴蝶展翅，邊緣帶著青色的電弧。這是整首歌最亮、最滿的一幀。
+
+<div class="media-row">
+  <img src="/images/hope-sparkles/10.jpg" alt="金黃放射" />
+  <img src="/images/hope-sparkles/11.jpg" alt="對稱爆發 — 高潮段" />
 </div>
+
+</div>
+
+---
+
+<div class="section-label">Outro</div>
+
+## 收尾
+
+能量消散後，畫面回到最暗的狀態。深綠色的枝狀結構在黑暗中微弱呼吸，像是一切燃燒殆盡後留下的餘燼。
+
+<img src="/images/hope-sparkles/12.jpg" alt="暗場收斂" />
+
+---
+
+<div class="section-label">Compositing</div>
+
+## 合成輸出
 
 所有模組在 Resolume Arena 中合成輸出，搭配歌曲時間軸對位。
 
-<img src="/images/motion/hope-sparkles/led-mapping.jpg" alt="Arena LED 對位圖" />
-<div class="caption">LED 輸出對位配置 · 2000×1500</div>
-
----
-
-## 現場
-
-<div class="media-grid three">
-  <img src="/images/motion/hope-sparkles/live-1.jpg" alt="現場照片" />
-  <img src="/images/motion/hope-sparkles/live-2.jpg" alt="現場照片" />
-  <img src="/images/motion/hope-sparkles-cover.jpg" alt="現場照片" />
-</div>
+<img src="/images/hope-sparkles/arena.png" alt="Resolume Arena — 合成介面" />
+<div class="caption">Resolume Arena · 2000×1500 LED 輸出對位</div>
 
 ---
 
@@ -169,14 +148,28 @@ category: 動態視覺
 
 ---
 
-## 製作
+## 現場
+
+<div class="media-row">
+  <img src="/images/hope-sparkles/live-1.jpg" alt="現場 — 白色粒子投影" />
+  <img src="/images/hope-sparkles/live-2.jpg" alt="現場 — 色彩爆發" />
+</div>
+
+<img src="/images/hope-sparkles/cover.jpg" alt="現場全景" />
+
+---
 
 <div class="section-label">Tools</div>
 
+## 製作
+
 <div class="tools-list">
-  TouchDesigner · After Effects · Resolume Arena · Logic Pro
+  TouchDesigner — 全曲視覺生成與音畫互動<br>
+  Resolume Arena — 多層合成與 LED 對位輸出<br>
+  After Effects — 預渲染素材<br>
+  Logic Pro — 音樂時間軸同步
 </div>
 
 <div class="section-label">Team</div>
 
-王仁和、柯光烜
+王仁和

@@ -1,9 +1,10 @@
 ---
 title: 戀綜125 — 舞台視覺與 VJ
 date: "2026-03"
-image: "/images/project/love125-scene-01.jpg"
+image: "/images/love-variety-125/love125-cover.png"
 excerpt: 戀愛綜藝節目的現場舞台視覺設計，包含主視覺投影、VJ 即時演出、身控樂器互動裝置與 Ableton 音樂整合。
 category: 專案
+tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", "Mediapipe", "Pepper's Ghost", "女巫店"]
 ---
 
 <div class="section-label">Overview</div>

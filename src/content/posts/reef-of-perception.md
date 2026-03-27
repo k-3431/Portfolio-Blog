@@ -1,9 +1,10 @@
 ---
 title: 知覺的礁岩 — 攝影集海報
 date: "2024-07"
-image: "/images/design/reef-of-perception.png"
+image: "/images/reef-of-perception/cover.jpg"
 excerpt: 港口、起重機、橋墩。一組關於工業地景與靜默知覺的攝影集海報設計。
 category: 攝影
+tags: ["攝影集", "海報設計", "黑白", "工業地景", "港口", "極簡"]
 ---
 
 這張海報為一本攝影集設計。攝影集裡收錄的是港口周邊的風景——海面、起重機群、橋墩倒影——全部是黑白的，全部很安靜。
