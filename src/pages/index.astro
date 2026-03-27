@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Base title="K.">
+  <div class="masonry">
+    {posts.map((post, i) => (
+      <article class="card">
+        <a href={`/posts/${post.id}`} class="card-inner">
+          {post.data.image && (
+            <div class="card-image">
+              <img src={post.data.image} alt={post.data.title} loading="lazy" />
+            </div>
+          )}
+          <div class="card-body">
+            <h2 class="card-title">{post.data.title}</h2>
+            {post.data.excerpt && <p class="card-excerpt">{post.data.excerpt}</p>}
+            <time class="card-date">{post.data.date}</time>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+  <div class="page-end"></div>
+</Base>
+
+<style>
+  .masonry {
+    columns: 3;
+    column-gap: 24px;
+  }
+
+  .card {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    display: inline-block;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .card:global(.revealed) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-inner {
+    display: block;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--fg);
+    will-change: transform;
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .card-inner:hover {
+    transform: scale(1.035);
+    border-color: #999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-image {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.03));
+    pointer-events: none;
+  }
+
+  .card-image img {
+    width: 100%;
+    display: block;
+  }
+
+  .card-body {
+    padding: 20px 22px 22px;
+  }
+
+  .card-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+  }
+
+  .card-inner:hover .card-title {
+    color: var(--fg-muted);
+  }
+
+  .card-excerpt {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-date {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.1em;
+    display: block;
+  }
+
+  .page-end {
+    height: 80px;
+  }
+
+  @media (max-width: 1024px) {
+    .masonry {
+      columns: 2;
+      column-gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .masonry {
+      columns: 1;
+    }
+  }
+</style>

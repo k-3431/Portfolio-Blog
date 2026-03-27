@@ -1,0 +1,132 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title}>
+  <article class="post">
+    <header class="post-header">
+      <time class="post-date">{post.data.date}</time>
+      <h1 class="post-title">{post.data.title}</h1>
+    </header>
+    {post.data.image && (
+      <div class="post-hero">
+        <img src={post.data.image} alt={post.data.title} />
+      </div>
+    )}
+    <div class="post-body">
+      <Content />
+    </div>
+    <footer class="post-footer">
+      <a href="/" class="back-link">
+        <span class="back-arrow">&larr;</span>
+        <span>返回</span>
+      </a>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .post {
+    max-width: 620px;
+    animation: fadeIn 0.5s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .post-header {
+    margin-bottom: 36px;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .post-hero {
+    margin-bottom: 36px;
+  }
+
+  .post-hero img {
+    width: 100%;
+  }
+
+  .post-body {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--fg);
+  }
+
+  .post-body :global(p) {
+    margin-bottom: 1.6em;
+    text-align: justify;
+  }
+
+  .post-body :global(img) {
+    margin: 2.5em 0;
+  }
+
+  .post-body :global(blockquote) {
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
+    color: var(--fg-muted);
+    margin: 2em 0;
+    font-style: italic;
+  }
+
+  .post-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--fg-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+  }
+
+  .back-link:hover {
+    color: var(--fg);
+  }
+
+  .back-arrow {
+    transition: transform 0.3s;
+  }
+
+  .back-link:hover .back-arrow {
+    transform: translateX(-3px);
+  }
+</style>
