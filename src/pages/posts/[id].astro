@@ -331,6 +331,21 @@ const base = import.meta.env.BASE_URL;
     aspect-ratio: 1 / 1;
   }
 
+  .post-body :global(.layout-h.dark) {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #edebe8;
+    max-width: 720px;
+  }
+
+  .post-body :global(.layout-h.dark .layout-text) {
+    color: #c8c4be;
+  }
+
+  .post-body :global(.layout-h.dark .layout-text strong) {
+    color: #edebe8;
+  }
+
   .post-body :global(.layout-h .media-placeholder.hero) {
     aspect-ratio: 16 / 9;
   }
@@ -371,12 +386,16 @@ const base = import.meta.env.BASE_URL;
 
 
   /* section-dark 內的元素繼承限制 */
+  .post-body :global(.section-dark > img:last-child) {
+    margin-bottom: -16px;
+  }
+
   .post-body :global(.section-dark .layout-h) {
     max-width: 640px;
   }
 
   .post-body :global(.section-dark .media-grid) {
-    max-width: 600px;
+    max-width: 100%;
   }
 
   .post-body :global(.section-dark .media-placeholder.hero) {
@@ -459,22 +478,28 @@ const base = import.meta.env.BASE_URL;
   .post-body :global(.video-embed) {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;
+    aspect-ratio: 16/9;
     margin-bottom: 2.5em;
     border-radius: 4px;
     overflow: hidden;
     background: #0a0a0a;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .post-body :global(.video-embed img) {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: opacity 0.4s;
+  }
+
+  .post-body :global(.media-row .video-embed) {
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .post-body :global(.video-embed:hover img) {
@@ -566,8 +591,17 @@ const base = import.meta.env.BASE_URL;
       padding: 28px 20px;
     }
 
+    .post-body :global(.media-row:not(:has(.video-embed))) {
+      flex-direction: column;
+    }
+
     .post-body :global(.media-row img) {
       height: auto;
+    }
+
+    .post-body :global(.media-row .video-embed) {
+      flex: 1 1 0;
+      min-width: 0;
     }
 
     .post-body :global(.media-grid.three) {
