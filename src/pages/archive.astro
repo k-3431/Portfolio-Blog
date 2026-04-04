@@ -6,8 +6,6 @@ const posts = (await getCollection('posts')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const base = import.meta.env.BASE_URL;
-
 const years = [...new Set(posts.map((p) => new Date(p.data.date).getFullYear()))].sort((a, b) => b - a);
 ---
 
@@ -21,7 +19,7 @@ const years = [...new Set(posts.map((p) => new Date(p.data.date).getFullYear()))
         {posts
           .filter((p) => new Date(p.data.date).getFullYear() === year)
           .map((post) => (
-            <a href={`${base}/posts/${post.id}`} class="archive-item">
+            <a href={`/posts/${post.id}`} class="archive-item">
               <time class="archive-date">{post.data.date}</time>
               <span class="archive-name">{post.data.title}</span>
               {post.data.category && <span class="archive-cat">{post.data.category}</span>}

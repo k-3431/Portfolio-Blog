@@ -1,18 +1,21 @@
 ---
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = 'kk' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const { title = 'kk', description = 'kk — portfolio & blog', image = '/images/og-default.png' } = Astro.props;
+const siteUrl = 'https://k-3431-portfolio-blog.pages.dev';
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
 const nav = [
-  { label: '首頁', href: `${base}/` },
-  { label: '專案', href: `${base}/projects` },
-  { label: '動態視覺', href: `${base}/motion` },
-  { label: '平面設計', href: `${base}/design` },
-  { label: '攝影', href: `${base}/photography` },
-  { label: '文章', href: `${base}/blog` },
+  { label: '首頁', href: '/' },
+  { label: '專案', href: '/projects' },
+  { label: '動態視覺', href: '/motion' },
+  { label: '平面設計', href: '/design' },
+  { label: '攝影', href: '/photography' },
+  { label: '文章', href: '/blog' },
 ];
 
 const social = [
@@ -25,9 +28,18 @@ const social = [
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -83,6 +95,9 @@ const social = [
         max-width: 100%;
         height: auto;
         display: block;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
       }
 
       ::selection {
@@ -360,7 +375,7 @@ const social = [
     <aside class="sidebar" id="sidebar">
       <div>
         <div class="site-identity">
-          <a href={`${base}/`} class="site-title">kk</a>
+          <a href="/" class="site-title">kk</a>
           <span class="site-subtitle">portfolio & blog</span>
         </div>
         <nav class="nav-section">
@@ -370,7 +385,7 @@ const social = [
         </nav>
       </div>
       <div class="sidebar-bottom">
-        <a href={`${base}/archive`} class="nav-link-bottom">目錄</a>
+        <a href="/archive" class="nav-link-bottom">目錄</a>
         <div class="sidebar-line"></div>
         {social.map((item) => (
           <a href={item.href} class="social-link" target="_blank" rel="noopener noreferrer">{item.label}</a>
@@ -413,6 +428,14 @@ const social = [
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
+      // Disable right-click & drag on images
+      document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+      });
+      document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+      });
+
       // Scroll reveal for cards
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -427,18 +450,7 @@ const social = [
         observer.observe(card);
       });
 
-      // Video embed — click to play
-      document.querySelectorAll('.video-embed[data-id]').forEach(el => {
-        el.addEventListener('click', () => {
-          const id = el.getAttribute('data-id');
-          el.classList.add('playing');
-          const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-          iframe.allowFullscreen = true;
-          el.appendChild(iframe);
-        });
-      });
+      // Video embed playback is handled by lightbox in [id].astro
     </script>
   </body>
 </html>

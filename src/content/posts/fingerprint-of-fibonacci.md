@@ -164,24 +164,24 @@ tags: ["數學秩序", "有機生命", "黃金螺旋", "公式", "失真", "噪�
 
 ## 影片
 
-<div class="video-embed" style="aspect-ratio: 576/155" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/4nUNwajylao?autoplay=1\' allowfullscreen></iframe>';this.classList.add('playing')">
+<div class="video-embed" style="aspect-ratio: 576/155" data-id="4nUNwajylao">
   <img src="/images/fingerprint-of-fibonacci/a3.png" alt="Stage Preview" />
   <div class="play-btn"></div>
 </div>
 <div class="caption">Stage Preview — 五面舞台全景預覽</div>
 
-<div class="video-embed" style="aspect-ratio: 576/147" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/3CBFI6TKP7k?autoplay=1\' allowfullscreen></iframe>';this.classList.add('playing')">
+<div class="video-embed" style="aspect-ratio: 576/147" data-id="3CBFI6TKP7k">
   <img src="/images/fingerprint-of-fibonacci/c12.png" alt="Center Stage" />
   <div class="play-btn"></div>
 </div>
 <div class="caption">Center Stage — 中央舞台</div>
 
 <div class="media-row">
-  <div class="video-embed" style="aspect-ratio: 1/1" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/6kScJy6EMiA?autoplay=1\' allowfullscreen></iframe>';this.classList.add('playing')">
+  <div class="video-embed" style="aspect-ratio: 1/1" data-id="6kScJy6EMiA">
     <img src="/images/fingerprint-of-fibonacci/lr1-thumb.png" alt="LR Stage" />
     <div class="play-btn"></div>
   </div>
-  <div class="video-embed" style="aspect-ratio: 1/1" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/x_VIIQOGljc?autoplay=1\' allowfullscreen></iframe>';this.classList.add('playing')">
+  <div class="video-embed" style="aspect-ratio: 1/1" data-id="x_VIIQOGljc">
     <img src="/images/fingerprint-of-fibonacci/s1.png" alt="Sky Stage" />
     <div class="play-btn"></div>
   </div>

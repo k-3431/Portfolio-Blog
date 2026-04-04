@@ -1,8 +1,8 @@
 ---
-title: Finnegans Wake 文字海報
+title: Finnegans Wake
 date: "2025-04"
 image: "/images/finnegans-wake/cover.jpg"
-excerpt: 以 James Joyce 的《乃悟能守醒》為題的實驗性文字海報設計。
+excerpt: James Joyce — Finnegans Wake
 category: 平面設計
 tags: ["文字海報", "James Joyce", "實驗排版", "解構", "平面設計"]
 ---

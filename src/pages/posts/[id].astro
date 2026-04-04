@@ -12,10 +12,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const base = import.meta.env.BASE_URL;
 ---
 
-<Base title={post.data.title}>
+<Base title={post.data.title} description={post.data.excerpt} image={post.data.image}>
   <article class="post">
     <header class="post-header">
       <time class="post-date">{post.data.date}</time>
@@ -23,33 +22,14 @@ const base = import.meta.env.BASE_URL;
     </header>
     {post.data.image && (
       <div class="post-hero">
-        <img src={`${base}${post.data.image}`} alt={post.data.title} />
+        <img src={post.data.image} alt={post.data.title} />
       </div>
     )}
     <div class="post-body" id="postBody">
       <Content />
     </div>
-    <script define:vars={{ base }}>
-      function rewritePaths() {
-        const body = document.getElementById('postBody');
-        if (!body) return;
-        body.querySelectorAll('img[src^="/images/"], img[src^="/favicon"]').forEach(el => {
-          const src = el.getAttribute('src');
-          if (!src.startsWith(base)) el.src = base + src;
-        });
-        body.querySelectorAll('a[href^="/"]').forEach(el => {
-          const href = el.getAttribute('href');
-          if (!href.startsWith('//') && !href.startsWith(base)) el.href = base + href;
-        });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', rewritePaths);
-      } else {
-        rewritePaths();
-      }
-    </script>
     <footer class="post-footer">
-      <a href={`${base}/`} class="back-link">
+      <a href="/" class="back-link">
         <span class="back-arrow">&larr;</span>
         <span>返回</span>
       </a>
@@ -192,6 +172,12 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* 獨立 placeholder — 限制在合理尺寸，確保單一元素不超過視窗高度 */
+  .post-body :global(.media-placeholder.dark) {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #666;
+  }
+
   .post-body :global(.media-placeholder.hero) {
     aspect-ratio: 16 / 9;
     max-width: 560px;
@@ -654,3 +640,103 @@ const base = import.meta.env.BASE_URL;
     transform: translateX(-3px);
   }
 </style>
+
+<style is:global>
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox-overlay.active {
+    opacity: 1;
+  }
+
+  .lightbox-overlay img,
+  .lightbox-overlay iframe {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: transform 0.25s ease;
+  }
+
+  .lightbox-overlay iframe {
+    border: 0;
+    pointer-events: auto;
+  }
+
+  .lightbox-overlay.active img,
+  .lightbox-overlay.active iframe {
+    transform: scale(1);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    var lbImg = document.createElement('img');
+    overlay.appendChild(lbImg);
+    document.body.appendChild(overlay);
+
+    post.addEventListener('click', function(e) {
+      var target = e.target;
+      var videoEmbed = target.closest('.video-embed');
+
+      if (videoEmbed) {
+        var id = videoEmbed.getAttribute('data-id');
+        if (!id) return;
+        e.stopPropagation();
+        lbImg.style.display = 'none';
+        var ratio = getComputedStyle(videoEmbed).aspectRatio || '16/9';
+        var parts = ratio.split('/');
+        var w = parseFloat(parts[0]);
+        var h = parseFloat(parts[1] || 1);
+        // 在 90vw x 90vh 內等比縮放
+        var maxW = window.innerWidth * 0.9;
+        var maxH = window.innerHeight * 0.9;
+        var scale = Math.min(maxW / w, maxH / h);
+        var iframe = document.createElement('iframe');
+        iframe.style.width = Math.round(w * scale) + 'px';
+        iframe.style.height = Math.round(h * scale) + 'px';
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        overlay.appendChild(iframe);
+        overlay.style.display = 'flex';
+        requestAnimationFrame(function() { overlay.classList.add('active'); });
+        return;
+      }
+
+      if (target.tagName !== 'IMG') return;
+      lbImg.style.display = '';
+      lbImg.src = target.src;
+      overlay.style.display = 'flex';
+      requestAnimationFrame(function() { overlay.classList.add('active'); });
+    });
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target.tagName === 'IFRAME') return;
+      overlay.classList.remove('active');
+      overlay.addEventListener('transitionend', function handler() {
+        overlay.style.display = 'none';
+        var iframe = overlay.querySelector('iframe');
+        if (iframe) iframe.remove();
+        overlay.removeEventListener('transitionend', handler);
+      });
+    });
+  })();
+</script>

@@ -25,6 +25,8 @@ tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微
 
 ---
 
+<div class="section-label">Visual Direction</div>
+
 <div class="section-dark">
 
 <div class="section-label">Intro</div>
@@ -123,21 +125,34 @@ tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微
 
 ---
 
-<div class="section-label">Compositing</div>
+<div class="section-label">Workflow</div>
 
-## 合成輸出
+## 工作流
 
-所有模組在 Resolume Arena 中合成輸出，搭配歌曲時間軸對位。
+各段視覺素材在 TouchDesigner 中以粒子系統與音訊驅動生成，部分段落經 After Effects 預渲染，最後於 Resolume Arena 合成輸出。
 
-<img src="/images/hope-sparkles/arena.png" alt="Resolume Arena — 合成介面" />
-<div class="caption">Resolume Arena · 2000×1500 LED 輸出對位</div>
+<div class="media-row">
+  <img src="/images/hope-sparkles/ae.png" alt="After Effects — 合成時間軸" />
+  <img src="/images/hope-sparkles/arena.png" alt="Resolume Arena — 合成輸出" />
+</div>
+
+<div class="media-grid three">
+  <img src="/images/hope-sparkles/cells.png" alt="TouchDesigner — 細胞粒子模組" />
+  <img src="/images/hope-sparkles/bubble-b.png" alt="TouchDesigner — 流體泡泡" />
+  <img src="/images/hope-sparkles/star.png" alt="TouchDesigner — 星塵放射" />
+  <img src="/images/hope-sparkles/sun.png" alt="TouchDesigner — 太陽粒子" />
+  <img src="/images/hope-sparkles/fish.png" alt="TouchDesigner — 魚形粒子" />
+  <img src="/images/hope-sparkles/phenix.png" alt="TouchDesigner — 鳳凰粒子" />
+</div>
 
 ---
 
+<div class="section-label">Video</div>
+
 ## 演出影片
 
-<div class="video-embed" data-id="g5LQXJSXZXE">
-  <img src="https://img.youtube.com/vi/g5LQXJSXZXE/maxresdefault.jpg" alt="希望像星星一樣閃爍 — 演出紀錄 1" />
+<div class="video-embed" data-id="SlFEVE9KGRI">
+  <img src="https://img.youtube.com/vi/SlFEVE9KGRI/maxresdefault.jpg" alt="希望像星星一樣閃爍 — 演出紀錄 1" />
   <div class="play-btn"></div>
 </div>
 
@@ -147,6 +162,8 @@ tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微
 </div>
 
 ---
+
+<div class="section-label">Live</div>
 
 ## 現場
 
@@ -161,7 +178,7 @@ tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微
 
 <div class="section-label">Tools</div>
 
-## 製作
+## 工具
 
 <div class="tools-list">
   TouchDesigner — 全曲視覺生成與音畫互動<br>
@@ -170,6 +187,12 @@ tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微
   Logic Pro — 音樂時間軸同步
 </div>
 
+---
+
 <div class="section-label">Team</div>
 
-王仁和
+## 團隊
+
+<div class="tools-list">
+  視覺設計 / 動態製作 — kk
+</div>

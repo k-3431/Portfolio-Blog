@@ -7,7 +7,7 @@ category: 專案
 tags: ["互動裝置", "攝影", "TouchDesigner", "MediaPipe", "手勢追蹤", "台北", "世新大學"]
 ---
 
-<div class="section-label">Overview</div>
+<div class="section-label">Concept</div>
 
 Cellules — 小房間，也是生命最小的單元。一座城市的記憶，如何在指尖生長。
 
@@ -25,7 +25,7 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
 
 ---
 
-<div class="section-label">Concept</div>
+<div class="section-label">Visual Direction</div>
 
 ## 城市是活的
 
@@ -196,11 +196,22 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
 
 <div class="section-label">Tools</div>
 
-## 製作
+## 工具
 
 <div class="tools-list">
   TouchDesigner — 3D 球體渲染・互動邏輯<br>
   MediaPipe — 手部骨架追蹤<br>
   NDI — 影像無線串流<br>
   MIDI — 控制訊號傳輸
+</div>
+
+---
+
+<div class="section-label">Team</div>
+
+## 團隊
+
+<div class="tools-list">
+  視覺設計 / 軟硬體架構 / 現場執行 — kk<br>
+  攝影 — 皞皞
 </div>
