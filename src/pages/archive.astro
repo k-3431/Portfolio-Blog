@@ -9,8 +9,11 @@ const posts = (await getCollection('posts')).sort(
 const years = [...new Set(posts.map((p) => new Date(p.data.date).getFullYear()))].sort((a, b) => b - a);
 ---
 
-<Base title="文章目錄">
-  <h1 class="page-title">文章目錄</h1>
+<Base title="目錄">
+  <header class="page-header">
+    <span class="page-label">archive</span>
+    <h1 class="page-title">目錄</h1>
+  </header>
 
   {years.map((year) => (
     <section class="year-section">
@@ -31,27 +34,62 @@ const years = [...new Set(posts.map((p) => new Date(p.data.date).getFullYear()))
 </Base>
 
 <style>
+  .page-header {
+    margin-bottom: 56px;
+  }
+
+  .page-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+
   .page-title {
     font-family: var(--font-display);
     font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 600;
-    margin-bottom: 48px;
     letter-spacing: -0.01em;
   }
 
   .year-section {
-    margin-bottom: 40px;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 32px;
+    align-items: start;
   }
 
   .year-title {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
     font-weight: 400;
-    color: var(--fg-faint);
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    font-style: italic;
+    color: var(--fg);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    position: sticky;
+    top: 40px;
+  }
+
+  .cat-list {
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 700px) {
+    .year-section {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .year-title {
+      position: static;
+      font-size: 2rem;
+    }
   }
 
   .cat-list {
@@ -64,7 +102,8 @@ const years = [...new Set(posts.map((p) => new Date(p.data.date).getFullYear()))
     display: flex;
     align-items: baseline;
     gap: 20px;
-    padding: 10px 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
     text-decoration: none;
     color: var(--fg);
     transition: color 0.2s, padding-left 0.3s;

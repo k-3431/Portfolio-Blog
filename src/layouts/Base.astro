@@ -5,9 +5,13 @@ interface Props {
   image?: string;
 }
 
-const { title = 'kk', description = 'kk — portfolio & blog', image = '/images/og-default.png' } = Astro.props;
+const props = Astro.props;
+const title = props.title ? (props.title === 'kk' ? 'kk' : `${props.title} — kk`) : 'kk';
+const description = props.description || 'kk — portfolio & blog';
 const siteUrl = 'https://k-3431-portfolio-blog.pages.dev';
+const image = props.image || '/images/og-default.png';
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const nav = [
   { label: '首頁', href: '/' },
@@ -225,6 +229,15 @@ const social = [
         width: 10px;
       }
 
+      .nav-link[aria-current='page'] {
+        color: var(--fg);
+        padding-left: 16px;
+      }
+
+      .nav-link[aria-current='page']::before {
+        width: 10px;
+      }
+
       .sidebar-bottom {
         display: flex;
         flex-direction: column;
@@ -380,7 +393,11 @@ const social = [
         </div>
         <nav class="nav-section">
           {nav.map((item) => (
-            <a href={item.href} class="nav-link">{item.label}</a>
+            <a
+              href={item.href}
+              class="nav-link"
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >{item.label}</a>
           ))}
         </nav>
       </div>
@@ -403,10 +420,26 @@ const social = [
 
     <script>
       // Mobile menu
-      document.getElementById('menuToggle')?.addEventListener('click', () => {
-        document.getElementById('sidebar')?.classList.toggle('open');
-        document.getElementById('menuToggle')?.classList.toggle('open');
+      const sidebar = document.getElementById('sidebar');
+      const menuToggle = document.getElementById('menuToggle');
+      menuToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar?.classList.toggle('open');
+        menuToggle?.classList.toggle('open');
       });
+      // capture phase：關閉選單的那一次點擊不要穿透到底下的連結
+      document.addEventListener('click', (e) => {
+        if (
+          sidebar?.classList.contains('open') &&
+          !sidebar.contains(e.target as Node) &&
+          !menuToggle?.contains(e.target as Node)
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          sidebar.classList.remove('open');
+          menuToggle?.classList.remove('open');
+        }
+      }, true);
 
       // Clock
       function updateClock() {
@@ -434,20 +467,6 @@ const social = [
       });
       document.addEventListener('dragstart', function(e) {
         if (e.target.tagName === 'IMG') e.preventDefault();
-      });
-
-      // Scroll reveal for cards
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
       });
 
       // Video embed playback is handled by lightbox in [id].astro

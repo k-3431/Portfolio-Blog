@@ -1,0 +1,240 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  title: string;
+  posts: CollectionEntry<'posts'>[];
+  emptyMessage?: string;
+}
+
+const { title, posts, emptyMessage = '尚無內容。' } = Astro.props;
+---
+
+<header class="page-header">
+  <span class="page-label">index / {posts.length.toString().padStart(2, '0')}</span>
+  <h1 class="page-title">{title}</h1>
+</header>
+
+{posts.length === 0 ? (
+  <div class="empty-state">
+    <span class="empty-mark">✳</span>
+    <p>{emptyMessage}</p>
+  </div>
+) : (
+  <div class="post-list">
+    {posts.map((post, i) => (
+      <a href={`/posts/${post.id}`} class="post-item" style={`animation-delay: ${0.08 + i * 0.06}s`}>
+        <span class="post-index">{(i + 1).toString().padStart(2, '0')}</span>
+        <div class="post-thumb">
+          {post.data.image ? (
+            <img src={post.data.image} alt={post.data.title} loading="lazy" />
+          ) : (
+            <div class="thumb-placeholder">
+              <span>{post.data.category || '—'}</span>
+            </div>
+          )}
+        </div>
+        <div class="post-info">
+          <time class="post-date">{post.data.date}</time>
+          <h2 class="post-name">{post.data.title}</h2>
+          {post.data.excerpt && <p class="post-excerpt">{post.data.excerpt}</p>}
+        </div>
+      </a>
+    ))}
+  </div>
+)}
+
+<style>
+  .page-header {
+    margin-bottom: 48px;
+  }
+
+  .page-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    color: var(--fg-faint);
+  }
+
+  .empty-mark {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .empty-state p {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── List ── */
+  .post-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-item {
+    display: grid;
+    grid-template-columns: 32px 180px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--fg);
+    transition: background 0.25s, padding-left 0.35s cubic-bezier(0.25, 0.1, 0, 1);
+    opacity: 0;
+    animation: itemIn 0.5s ease forwards;
+  }
+
+  @keyframes itemIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .post-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .post-item:hover {
+    padding-left: 8px;
+  }
+
+  .post-index {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.08em;
+  }
+
+  .post-thumb {
+    overflow: hidden;
+    border-radius: 2px;
+    width: 180px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0, 1);
+  }
+
+  .post-item:hover .post-thumb img {
+    transform: scale(1.04);
+  }
+
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0,
+        transparent 7px,
+        rgba(0, 0, 0, 0.025) 7px,
+        rgba(0, 0, 0, 0.025) 8px
+      ),
+      var(--card-bg);
+  }
+
+  .thumb-placeholder span {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.2em;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .post-name {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    transition: color 0.25s;
+  }
+
+  .post-item:hover .post-name {
+    color: var(--fg-muted);
+  }
+
+  .post-excerpt {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .post-item {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .post-index {
+      display: none;
+    }
+
+    .post-thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .post-thumb img {
+      max-height: 100%;
+    }
+  }
+</style>

@@ -12,9 +12,13 @@ const posts = (await getCollection('posts')).sort(
     {posts.map((post) => (
       <article class="card">
         <a href={`/posts/${post.id}`} class="card-inner">
-          {post.data.image && (
+          {post.data.image ? (
             <div class="card-image">
               <img src={post.data.image} alt={post.data.title} loading="lazy" />
+            </div>
+          ) : (
+            <div class="card-noimage">
+              <span>✳ {post.data.category || 'post'}</span>
             </div>
           )}
           <div class="card-body">
@@ -46,28 +50,46 @@ const posts = (await getCollection('posts')).sort(
   .card {
     position: absolute;
     opacity: 0;
-    transition: opacity 0.5s ease, transform 0.3s ease;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.25, 0.1, 0, 1);
+    transition-delay: var(--reveal-delay, 0s);
   }
 
   .card.placed {
     opacity: 1;
+    transform: translateY(0);
   }
 
   .card-inner {
     display: block;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 2px;
     overflow: hidden;
     text-decoration: none;
     color: var(--fg);
-    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+    transition: transform 0.35s cubic-bezier(0.25, 0.1, 0, 1), border-color 0.3s, box-shadow 0.35s;
   }
 
   .card-inner:hover {
-    transform: scale(1.03);
+    transform: translateY(-4px);
     border-color: #999;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+  }
+
+  .card-noimage {
+    padding: 28px 22px 0;
+  }
+
+  .card-noimage span {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--fg-faint);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
   }
 
   .card-image {
@@ -149,22 +171,14 @@ const posts = (await getCollection('posts')).sort(
     line-height: 1.6;
   }
 
-  .card-cat {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--fg-faint);
-    letter-spacing: 0.06em;
-    border: 1px solid var(--border);
-    padding: 1px 6px;
-    border-radius: 2px;
-  }
-
   .page-end {
     height: 80px;
   }
 </style>
 
 <script>
+  let firstLayout = true;
+
   function layoutMasonry() {
     const container = document.getElementById('masonry');
     if (!container) return;
@@ -180,7 +194,7 @@ const posts = (await getCollection('posts')).sort(
     const colWidth = (containerWidth - gap * (cols - 1)) / cols;
     const colHeights = new Array(cols).fill(0);
 
-    cards.forEach((card) => {
+    cards.forEach((card, i) => {
       card.style.width = `${colWidth}px`;
 
       // Find shortest column
@@ -192,45 +206,44 @@ const posts = (await getCollection('posts')).sort(
 
       card.style.left = `${x}px`;
       card.style.top = `${y}px`;
+
+      if (firstLayout) {
+        card.style.setProperty('--reveal-delay', `${i * 0.06}s`);
+      }
       card.classList.add('placed');
 
       colHeights[colIndex] = y + card.offsetHeight + gap;
     });
 
     container.style.height = `${Math.max(...colHeights)}px`;
+
+    if (firstLayout) {
+      firstLayout = false;
+      // 進場結束後清掉 delay，避免之後 relayout 被延遲
+      setTimeout(() => {
+        cards.forEach((card) => card.style.removeProperty('--reveal-delay'));
+      }, cards.length * 60 + 700);
+    }
   }
 
-  // Wait for images to load then layout
+  // 立即排版一次，之後每張圖載入完成再重排（debounced），
+  // 避免 lazy 圖片晚到造成卡片重疊
+  let relayoutTimer: ReturnType<typeof setTimeout> | undefined;
+  function scheduleRelayout() {
+    clearTimeout(relayoutTimer);
+    relayoutTimer = setTimeout(layoutMasonry, 80);
+  }
+
   function initMasonry() {
-    const images = document.querySelectorAll('.card-image img');
-    let loaded = 0;
-    const total = images.length;
-
-    if (total === 0) {
-      layoutMasonry();
-      return;
-    }
-
-    images.forEach((img) => {
-      if ((img as HTMLImageElement).complete) {
-        loaded++;
-        if (loaded === total) layoutMasonry();
-      } else {
-        img.addEventListener('load', () => {
-          loaded++;
-          if (loaded === total) layoutMasonry();
-        });
-        img.addEventListener('error', () => {
-          loaded++;
-          if (loaded === total) layoutMasonry();
-        });
+    layoutMasonry();
+    document.querySelectorAll('.card-image img').forEach((img) => {
+      if (!(img as HTMLImageElement).complete) {
+        img.addEventListener('load', scheduleRelayout);
+        img.addEventListener('error', scheduleRelayout);
       }
     });
-
-    // Fallback
-    setTimeout(layoutMasonry, 3000);
   }
 
   initMasonry();
-  window.addEventListener('resize', layoutMasonry);
+  window.addEventListener('resize', scheduleRelayout);
 </script>

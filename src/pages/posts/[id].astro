@@ -3,21 +3,36 @@ import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => ({
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
+  return posts.map((post, i) => ({
     params: { id: post.id },
-    props: { post },
+    props: {
+      post,
+      // 列表是新到舊：prev = 較新的一篇，next = 較舊的一篇
+      prev: posts[i - 1] ?? null,
+      next: posts[i + 1] ?? null,
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
 ---
 
 <Base title={post.data.title} description={post.data.excerpt} image={post.data.image}>
   <article class="post">
     <header class="post-header">
-      <time class="post-date">{post.data.date}</time>
+      <div class="post-meta">
+        {post.data.category && (
+          <>
+            <span class="post-cat">{post.data.category}</span>
+            <span class="post-meta-sep">/</span>
+          </>
+        )}
+        <time class="post-date">{post.data.date}</time>
+      </div>
       <h1 class="post-title">{post.data.title}</h1>
     </header>
     {post.data.image && (
@@ -29,9 +44,23 @@ const { Content } = await render(post);
       <Content />
     </div>
     <footer class="post-footer">
+      <nav class="post-nav">
+        {prev ? (
+          <a href={`/posts/${prev.id}`} class="post-nav-link prev">
+            <span class="post-nav-label">&larr; 較新</span>
+            <span class="post-nav-title">{prev.data.title}</span>
+          </a>
+        ) : <span class="post-nav-spacer" />}
+        {next ? (
+          <a href={`/posts/${next.id}`} class="post-nav-link next">
+            <span class="post-nav-label">較舊 &rarr;</span>
+            <span class="post-nav-title">{next.data.title}</span>
+          </a>
+        ) : <span class="post-nav-spacer" />}
+      </nav>
       <a href="/" class="back-link">
         <span class="back-arrow">&larr;</span>
-        <span>返回</span>
+        <span>返回首頁</span>
       </a>
     </footer>
   </article>
@@ -54,14 +83,24 @@ const { Content } = await render(post);
     margin-bottom: 36px;
   }
 
-  .post-date {
+  .post-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 300;
     color: var(--fg-faint);
     letter-spacing: 0.12em;
-    display: block;
-    margin-bottom: 12px;
+  }
+
+  .post-cat {
+    color: var(--fg-muted);
+  }
+
+  .post-meta-sep {
+    opacity: 0.5;
   }
 
   .post-title {
@@ -615,6 +654,58 @@ const { Content } = await render(post);
     margin-top: 64px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
+    max-width: 720px;
+  }
+
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  .post-nav-link.next {
+    text-align: right;
+  }
+
+  .post-nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 300;
+    color: var(--fg-faint);
+    letter-spacing: 0.12em;
+    transition: color 0.25s;
+  }
+
+  .post-nav-title {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--fg-muted);
+    line-height: 1.6;
+    transition: color 0.25s;
+  }
+
+  .post-nav-link:hover .post-nav-label,
+  .post-nav-link:hover .post-nav-title {
+    color: var(--fg);
+  }
+
+  @media (max-width: 600px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .post-nav-link.next {
+      text-align: left;
+    }
   }
 
   .back-link {
