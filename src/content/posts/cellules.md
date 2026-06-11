@@ -1,7 +1,7 @@
 ---
 title: Cellules (running)
 date: "2026-06"
-image: /images/cellules/result_lvs1.jpeg
+image: /images/cellules/cover.jpeg
 excerpt: 互動裝置 × 攝影。以手勢驅動一顆呼吸的球體，喚醒散落在有機體表面的台北記憶。
 category: 專案
 tags: ["互動裝置", "攝影", "three.js", "MediaPipe", "手勢追蹤", "台北", "世新大學"]
@@ -207,7 +207,9 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
 
 展場入口的橫幅動態：黑 → 純絲線球體 → 照片球體 → Motion Title → MediaPipe 手勢 → Motion Ending。
 
-![Cellules LVS 全景](/images/cellules/result_lvs2.jpeg)
+![Cellules LVS 全景 01](/images/cellules/result_lvs1.jpeg)
+
+![Cellules LVS 全景 02](/images/cellules/result_lvs2.jpeg)
 
 ---
 
