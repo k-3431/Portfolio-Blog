@@ -9,7 +9,7 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 <div class="section-label">Concept</div>
 
-戀綜125 是一檔在女巫店舉辦的現場戀愛綜藝。我負責的部分包含舞台主視覺投影、VJ 即時視覺演出、互動影音裝置製作，以及整場演出的音樂節目流程整合。
+戀綜125 是一檔在女巫店舉辦的現場戀愛綜藝。我負責的部分包含場景動畫製作（將插畫做成 loop 影片）、前後兩首歌的 TouchDesigner 影音互動設計、MediaPipe 手勢辨識設計、結合 TouchDesigner 與 VTube Studio 的現場小雕像投影、硬體設計與串接，以及現場執行。場景插畫由合作插畫家繪製，音樂節目流程整合則與 Howie 共同完成。
 
 <div class="keywords">
   <span>現場演出</span>
@@ -33,7 +33,7 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
     <p>戀愛綜藝通常是粉紅色的、甜的、暖的，但現場的空間是女巫店——一個搖滾樂的 live house，牆是白的、粗的。</p>
     <p>所以視覺上我讓插畫的色彩去撐甜度，投影本身維持在比較乾淨的狀態，不去搶空間本身的質感。</p>
   </div>
-  <div class="media-placeholder dark">女巫店 — 場地空間</div>
+  <img src="/images/love-variety-125/love125-venue.jpg" alt="女巫店 — 場地空間" loading="lazy" />
 </div>
 
 場景設計走了一個跟節目調性完全相反的路線——用高彩度的 2D 手繪插畫去建構一個不存在的甜美世界，然後把它投在一面搖滾樂的白牆上。這個衝突本身就是整個視覺的核心。
@@ -46,29 +46,21 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 ## 場景
 
-三個主要場景，全部由 AI 生成動態素材（Dreamina），再透過 After Effects 做合成與動畫處理。
+三個主要場景。插畫由合作插畫家以 Dreamina（AI 影像生成）輔助繪製，我再透過 After Effects 做合成與動畫處理。
 
 <div class="media-grid three">
-  <div class="media-placeholder dark">客廳 — 粉紅沙發、綠地毯</div>
-  <div class="media-placeholder dark">廚房 — 粉色調烹飪空間</div>
-  <div class="media-placeholder dark">泳池 — 棕櫚樹、躺椅</div>
+  <img src="/images/love-variety-125/love125-scene-livingroom.jpg" alt="客廳場景 — 粉紅沙發、綠地毯" loading="lazy" />
+  <img src="/images/love-variety-125/love125-scene-kitchen.jpg" alt="廚房場景 — 粉色調烹飪空間" loading="lazy" />
+  <img src="/images/love-variety-125/love125-scene-pool.jpg" alt="泳池場景 — 棕櫚樹、躺椅" loading="lazy" />
 </div>
 
-<div class="layout-h">
-  <div class="layout-text">
-    <p>客廳是主要的談話場景，粉色沙發搭配綠色地毯，牆上掛著小幅插畫。整個空間刻意做得像兒童繪本的插圖——過度乾淨、過度甜美。</p>
-    <p>廚房和泳池是遊戲環節的場景。廚房走暖粉色調，泳池則是冷藍與粉紅的對比。</p>
-  </div>
-  <div class="media-placeholder dark">場景插畫 — 原始設計稿</div>
-</div>
+客廳是主要的談話場景，粉色沙發搭配綠色地毯，牆上掛著小幅插畫。整個空間刻意做得像兒童繪本的插圖——過度乾淨、過度甜美。
 
-<div class="layout-h reverse">
-  <div class="layout-text">
-    <p>所有場景素材都由 Dreamina（AI 影像生成）產出靜態底圖，再用 After Effects 把插畫裡的元素拆開做微動態——窗外的雲在飄、燈在搖、水面在晃。</p>
-    <p>讓一張靜態插畫活起來，但不要太活，保持那種「幾乎是靜止的」呼吸感。</p>
-  </div>
-  <div class="media-placeholder dark">AE 工程 — 場景動態合成</div>
-</div>
+廚房和泳池是遊戲環節的場景。廚房走暖粉色調，泳池則是冷藍與粉紅的對比。
+
+場景的靜態底圖由插畫家產出，我用 After Effects 把插畫裡的元素拆開做微動態 loop——窗外的雲在飄、燈在搖、水面在晃。
+
+讓一張靜態插畫活起來，但不要太活，保持那種「幾乎是靜止的」呼吸感。
 
 </div>
 
@@ -85,20 +77,10 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
     <strong>iPad</strong> — 小雕像投影控制<br>
     <strong>Monitor</strong> — Mediapipe 追蹤監看</p>
   </div>
-  <div class="media-placeholder dark">VJ 系統 — 三通道輸出架構</div>
+  <img src="/images/love-variety-125/love125-arena.jpg" alt="Resolume Arena — VJ 系統畫面" loading="lazy" />
 </div>
 
-每首歌都有獨立的 TouchDesigner 專案和預渲染影片，現場根據表演狀態即時切換和混合。歌單包含成癮、Does it call love、女賊、Stranger、飛翔等曲目。
-
-<div class="media-grid two">
-  <div class="media-placeholder dark">VJ 畫面 — 成癮</div>
-  <div class="media-placeholder dark">VJ 畫面 — Stranger</div>
-</div>
-
-<div class="media-grid two">
-  <div class="media-placeholder dark">VJ 畫面 — 女賊</div>
-  <div class="media-placeholder dark">VJ 畫面 — Does it call love</div>
-</div>
+開場的〈成癮〉與壓軸的〈飛翔〉是 TouchDesigner 即時互動視覺，中間的〈Does it call love〉〈女賊〉〈Stranger〉則是預渲染的 loop 影片，現場在 Resolume 裡根據表演狀態即時切換和混合。
 
 ---
 
@@ -110,22 +92,15 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 這是整個專案裡技術含量最高的部分。讓歌手 Juju 透過手勢即時控制聲音與視覺，觀眾看到的是一個懸浮在透明壓克力上的 3D 小雕像跟著手動。
 
-<div class="layout-h">
-  <div class="media-placeholder dark tall">Pepper's Ghost — 3D 投影效果</div>
-  <div class="layout-text">
-    <p><strong>訊號流程：</strong></p>
-    <p>Webcam → NDI → MediaPipe 手部骨架辨識 → TouchDesigner 訊號處理</p>
-    <p>分兩路輸出：<br>
-    MIDI → Ableton Live（聲音合成）<br>
-    NDI → Resolume Arena → 平板 + 45° 透明壓克力（Pepper's Ghost 3D 投影）</p>
-    <p>MediaPipe 輸出 21 個關節座標，TouchDesigner 解析後同時 mapping 到 MIDI 與視覺參數。所有 NDI 串流走同一個區域網路，以有線為主。</p>
-  </div>
-</div>
+**訊號流程：**
 
-<div class="media-grid two">
-  <div class="media-placeholder dark">MediaPipe — 手部追蹤畫面</div>
-  <div class="media-placeholder dark">小雕像 — TD 即時生成</div>
-</div>
+Webcam → NDI → MediaPipe 手部骨架辨識 → TouchDesigner 訊號處理
+
+分兩路輸出：<br>
+MIDI → Ableton Live（聲音合成）<br>
+NDI → Resolume Arena → 平板 + 45° 透明壓克力（Pepper's Ghost 3D 投影）
+
+MediaPipe 輸出 21 個關節座標，TouchDesigner 解析後同時 mapping 到 MIDI 與視覺參數。小雕像的形象由 VTube Studio 驅動，與 TouchDesigner 整合後進入投影鏈。所有 NDI 串流走同一個區域網路，以有線為主。
 
 </div>
 
@@ -135,15 +110,9 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 ## 音樂流程整合
 
-<div class="layout-h">
-  <div class="layout-text">
-    <p>整場演出的音樂透過 Ableton Live 搭配 AbleSet 做 PGM 控制，讓音樂 cue 點跟視覺切換能夠同步。</p>
-    <p>12 首歌的工作帶全部在 Ableton 裡做好分軌，包含人聲、吉他、鼓、Bass 的獨立 stem，現場可以根據需要即時調整。</p>
-  </div>
-  <div class="media-placeholder dark">Ableton Live — PGM 時間軸</div>
-</div>
+整場演出的音樂透過 Ableton Live 搭配 AbleSet 做 PGM 控制，讓音樂 cue 點跟視覺切換能夠同步，這部分由我和 Howie 共同完成。
 
-<div class="media-placeholder dark wide">AbleSet — 整場節目流程控制介面</div>
+12 首歌的工作帶全部在 Ableton 裡做好分軌，包含人聲、吉他、鼓、Bass 的獨立 stem，現場可以根據需要即時調整。
 
 ---
 
@@ -163,12 +132,8 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 ## 現場
 
-<div class="media-placeholder dark hero">2026.03.05 女巫店 — 演出現場</div>
-
-<div class="media-grid two">
-  <div class="media-placeholder dark">對位測試 — 投影與牆面校準</div>
-  <div class="media-placeholder dark">現場 — 設備架設</div>
-</div>
+<img src="/images/love-variety-125/love125-mapping.png" alt="投影對位圖" loading="lazy" />
+<div class="caption">投影對位圖 — 上方黑條 1920×165、主畫面 1920×915，中央剪影對應女巫店牆上的木招牌</div>
 
 ---
 
@@ -182,6 +147,7 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
   After Effects — 場景動態合成<br>
   Ableton Live + AbleSet — 音樂 PGM 控制<br>
   MediaPipe — 手部骨架追蹤<br>
+  VTube Studio — 小雕像形象驅動<br>
   Dreamina — AI 場景素材生成<br>
   NDI — 影像串流
 </div>
@@ -193,6 +159,7 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 ## 團隊
 
 <div class="tools-list">
-  kk<br>
-  Howie
+  kk — 場景動畫、TouchDesigner 影音互動設計、MediaPipe 設計、小雕像投影、硬體設計與串接、現場執行、音樂流程整合<br>
+  Howie — 音樂流程整合<br>
+  插畫 — 合作插畫家
 </div>

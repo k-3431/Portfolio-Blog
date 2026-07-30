@@ -1,5 +1,5 @@
 ---
-title: Cellules (running)
+title: Cellules
 date: "2026-06"
 image: /images/cellules/cover.jpeg
 excerpt: 互動裝置 × 攝影。以手勢驅動一顆呼吸的球體，喚醒散落在有機體表面的台北記憶。
@@ -199,6 +199,12 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
   </div>
 </div>
 
+<div class="video-embed" style="aspect-ratio: 4/3" data-id="VAQUE7E-UkY">
+  <img src="/images/cellules/video-install-thumb.jpg" alt="Cellules Interactive Installation" />
+  <div class="play-btn"></div>
+</div>
+<div class="caption">互動裝置操作紀錄</div>
+
 ---
 
 <div class="section-label">Result — LVS</div>
@@ -206,6 +212,12 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
 ## 成果 — 動態視覺
 
 展場入口的橫幅動態：黑 → 純絲線球體 → 照片球體 → Motion Title → MediaPipe 手勢 → Motion Ending。
+
+<div class="video-embed" style="aspect-ratio: 16/9" data-id="yBs8omXAOso">
+  <img src="/images/cellules/video-film-thumb.jpg" alt="Cellules LVS Film" />
+  <div class="play-btn"></div>
+</div>
+<div class="caption">Cellules — LVS 完整影片</div>
 
 ![Cellules LVS 全景 01](/images/cellules/result_lvs1.jpeg)
 
@@ -216,6 +228,11 @@ Cellules — 小房間，也是生命最小的單元。一座城市的記憶，�
 <div class="section-label">Result — Posters</div>
 
 ## 成果 — 主視覺海報
+
+<div style="max-width: 420px; margin: 2em auto;">
+  <img src="/images/cellules/result_poster_main.jpg" alt="Cellules 展場主視覺海報" loading="lazy" />
+</div>
+<div class="caption">展場主視覺</div>
 
 <div class="media-grid two">
   <img src="/images/cellules/result_poster1.jpeg" alt="主視覺海報 01" loading="lazy" />
