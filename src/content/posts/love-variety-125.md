@@ -2,14 +2,14 @@
 title: 戀綜125 — 舞台視覺與 VJ
 date: "2026-03"
 image: "/images/love-variety-125/love125-cover.png"
-excerpt: 戀愛綜藝節目的現場舞台視覺設計，包含主視覺投影、VJ 即時演出、身控樂器互動裝置與 Ableton 音樂整合。
+excerpt: 獨立歌手現場演出的舞台視覺設計，包含主視覺投影、VJ 即時演出、身控樂器互動裝置與 Ableton 音樂整合。
 category: 專案
 tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", "Mediapipe", "Pepper's Ghost", "女巫店"]
 ---
 
 <div class="section-label">Concept</div>
 
-戀綜125 是一檔在女巫店舉辦的現場戀愛綜藝。我負責的部分包含場景動畫製作（將插畫做成 loop 影片）、前後兩首歌的 TouchDesigner 影音互動設計、MediaPipe 手勢辨識設計、結合 TouchDesigner 與 VTube Studio 的現場小雕像投影、硬體設計與串接，以及現場執行。場景插畫由合作插畫家繪製，音樂節目流程整合則與 Howie 共同完成。
+戀綜125 是獨立歌手 Juju 在女巫店的一場現場演出。我負責的部分包含場景動畫製作（將插畫做成 loop 影片）、前後兩首歌的 TouchDesigner 影音互動設計、MediaPipe 手勢辨識設計、結合 TouchDesigner 與 VTube Studio 的現場小雕像投影、硬體設計與串接，以及現場執行。場景插畫由合作插畫家繪製，音樂節目流程整合則與 Howie 共同完成。
 
 <div class="keywords">
   <span>現場演出</span>
@@ -30,13 +30,13 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
 
 <div class="layout-h">
   <div class="layout-text">
-    <p>戀愛綜藝通常是粉紅色的、甜的、暖的，但現場的空間是女巫店——一個搖滾樂的 live house，牆是白的、粗的。</p>
-    <p>所以視覺上我讓插畫的色彩去撐甜度，投影本身維持在比較乾淨的狀態，不去搶空間本身的質感。</p>
+    <p>女巫店的空間本來就乾淨、偏清新，白牆帶著手抹的粗糙質感。</p>
+    <p>投影就維持乾淨，讓插畫的高彩度自己撐住畫面，不蓋掉牆面的質感。</p>
   </div>
   <img src="/images/love-variety-125/love125-venue.jpg" alt="女巫店 — 場地空間" loading="lazy" />
 </div>
 
-場景設計走了一個跟節目調性完全相反的路線——用高彩度的 2D 手繪插畫去建構一個不存在的甜美世界，然後把它投在一面搖滾樂的白牆上。這個衝突本身就是整個視覺的核心。
+場景用高彩度的 2D 手繪插畫，建構一個不存在的甜美世界，直接投在女巫店的白牆上。
 
 ---
 
@@ -79,6 +79,9 @@ tags: ["現場演出", "VJ", "TouchDesigner", "Resolume Arena", "Ableton Live", 
   </div>
   <img src="/images/love-variety-125/love125-arena.jpg" alt="Resolume Arena — VJ 系統畫面" loading="lazy" />
 </div>
+
+<img src="/images/love-variety-125/love125-mapping.png" alt="投影對位圖" loading="lazy" />
+<div class="caption">投影對位圖 — 上方黑條 1920×165、主畫面 1920×915，中央剪影對應女巫店牆上的木招牌</div>
 
 開場的〈成癮〉與壓軸的〈飛翔〉是 TouchDesigner 即時互動視覺，中間的〈Does it call love〉〈女賊〉〈Stranger〉則是預渲染的 loop 影片，現場在 Resolume 裡根據表演狀態即時切換和混合。
 
@@ -125,15 +128,6 @@ MediaPipe 輸出 21 個關節座標，TouchDesigner 解析後同時 mapping 到 
   <div class="play-btn"></div>
 </div>
 <div class="caption">演出紀錄</div>
-
----
-
-<div class="section-label">Live</div>
-
-## 現場
-
-<img src="/images/love-variety-125/love125-mapping.png" alt="投影對位圖" loading="lazy" />
-<div class="caption">投影對位圖 — 上方黑條 1920×165、主畫面 1920×915，中央剪影對應女巫店牆上的木招牌</div>
 
 ---
 

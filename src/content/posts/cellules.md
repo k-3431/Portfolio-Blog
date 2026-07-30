@@ -2,7 +2,7 @@
 title: Cellules
 date: "2026-06"
 image: /images/cellules/cover.jpeg
-excerpt: 互動裝置 × 攝影。以手勢驅動一顆呼吸的球體，喚醒散落在有機體表面的台北記憶。
+excerpt: 互動裝置 × 攝影。以手勢操作球體，瀏覽絲線末端的台北攝影。
 category: 專案
 tags: ["互動裝置", "攝影", "three.js", "MediaPipe", "手勢追蹤", "台北", "世新大學"]
 ---

@@ -2,7 +2,7 @@
 title: Fingerprint of Fibonacci
 date: "2025-12"
 image: "/images/fingerprint-of-fibonacci/c12.png"
-excerpt: 費波那契的指紋。一件關於數學秩序與生命混沌之間的舞台動態視覺作品。
+excerpt: 以黃金螺旋為主軸的四幕舞台動態視覺。
 category: 動態視覺
 tags: ["數學秩序", "有機生命", "黃金螺旋", "公式", "失真", "噪音", "LVS"]
 ---

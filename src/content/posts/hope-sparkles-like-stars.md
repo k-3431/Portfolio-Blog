@@ -2,7 +2,7 @@
 title: 文雀 — 希望像星星一樣閃爍
 date: "2025-12"
 image: "/images/hope-sparkles/cover.jpg"
-excerpt: 微粒與光線在黑暗中漂浮，介於人體與星系之間，屬於光的幻覺。
+excerpt: 為文雀的歌曲設計的動態舞台視覺，全曲以聲音驅動畫面。
 category: 動態視覺
 tags: ["音畫互動", "TouchDesigner", "粒子系統", "星星", "閃爍", "微光", "黑夜"]
 ---
